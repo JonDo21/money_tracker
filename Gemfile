@@ -40,6 +40,17 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# additional gems from the chat application
+
+# for user registration
+gem 'devise'
+
+gem 'handlebars_assets'
+
+gem 'therubyracer'
+gem 'twitter-bootstrap-rails'
+gem 'pusher'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
