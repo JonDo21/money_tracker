@@ -50,7 +50,7 @@ gem 'devise'
 gem 'handlebars_assets'
 
 gem 'therubyracer'
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass'
 gem 'pusher'
 
 # Use ActiveModel has_secure_password
