@@ -53,6 +53,9 @@ gem 'therubyracer'
 gem 'bootstrap-sass'
 gem 'pusher'
 
+# for password hashing
+gem 'bcrypt'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
