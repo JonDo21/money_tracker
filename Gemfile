@@ -9,6 +9,9 @@ gem 'rails', '4.0.8'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'byebug'
+  gem 'web-console'
+  gem 'spring'
 end
 
 group :production do
