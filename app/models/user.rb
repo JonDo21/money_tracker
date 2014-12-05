@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :expenses
   before_save { self.email = email.downcase }
   validates :uname, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
