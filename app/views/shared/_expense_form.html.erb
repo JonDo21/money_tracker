@@ -1,0 +1,14 @@
+<%= form_for(@expense) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description, class: 'form-control' %>
+
+      <%= f.label :amount %>
+      <%= f.number_field :amount, class: 'form-control', in: 0.0..1000.0, step:0.01 %>
+
+      <%= f.label :sharing_user, "Split this expense with another user?" %>
+      <%= f.text_field :sharing_user, class: 'form-control' %>
+
+      <%= f.submit "Create expense", class: "btn btn-primary" %>
+    <% end %>

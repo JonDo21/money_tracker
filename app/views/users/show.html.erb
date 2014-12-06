@@ -10,7 +10,8 @@
   </aside>
   <div class="col-md-8">
     <% if @user.expenses.any? %>
-      <h3>Expenses (<%= @user.expenses.count %>)</h3>
+      <!-- <h3>Expenses (<%= @user.expenses.count %>)</h3> -->
+      <h3><%= pluralize(current_user.expenses.count, "expense") %></h3>
       <ol class="expenses">
         <%= render @user.expenses %>
       </ol>
