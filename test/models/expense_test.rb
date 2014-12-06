@@ -46,4 +46,8 @@ class ExpenseTest < ActiveSupport::TestCase
     @expense.description = "a" * 51
     assert_not @expense.valid?
   end
+
+  test "order should be recent first" do
+    assert_equal Expense.first, expenses(:most_recent)
+  end
 end

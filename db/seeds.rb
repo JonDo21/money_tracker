@@ -26,3 +26,11 @@ User.create!(uname:  "exampleuser",
                password:              password,
                password_confirmation: password)
 end
+
+users = User.order(:created_at).take(6)
+10.times do
+  amount = Faker::Number.number(2)
+  rand_num = rand(1..10)
+  sharing_user = User.find_by(id: rand_num)
+  users.each { |user| user.expenses.create!(amount: amount, sharing_user: sharing_user) }
+end
