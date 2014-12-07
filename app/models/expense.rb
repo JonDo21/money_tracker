@@ -7,11 +7,11 @@ class Expense < ActiveRecord::Base
   validates :user, presence: true
   validates :amount, presence: true,
     :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ },
-      :numericality => { :greater_than => 0, :less_than => 1000 }
+      :numericality => { :greater_than => 0.0, :less_than => 1000.0 }
   validates :description, length: { minimum: 0, maximum: 50 }
 
   def defaults
     self.description ||= ''
-    self.sharing_user ||= self.user
+    # self.sharing_user ||= self.user
   end
 end
