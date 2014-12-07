@@ -16,6 +16,6 @@ class ExpensesController < ApplicationController
   private
 
     def expense_params
-      params.require(:expense).permit(:content)
+      params.require(:expense).permit(:amount, :description, :shared_user)
     end
 end
