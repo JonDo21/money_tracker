@@ -1,7 +1,14 @@
 <ul id="expense-<%= expense.id %>">
-  <span class="amount"><%= expense.amount %></span>
-  <span class="sharing_user"><%= link_to expense.sharing_user.uname, expense.sharing_user %></span>
-  <span class="timestamp">
+  <span class="amount"><%= number_to_currency(expense.amount, :unit => "$") %></span>
+  <span class="description"> for <%= expense.description %></span>
+  <% if expense.sharing_user %>
+  <span class="sharing_user">Shared with <%= link_to expense.sharing_user.uname, expense.sharing_user %></span>
+  <%end%>
+  <span class="timestamp"> created 
     <%= time_ago_in_words(expense.created_at) %> ago.
   </span>
+  <% if current_user?(expense.user) %>
+      <%= link_to "delete", expense, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
 </ul>
