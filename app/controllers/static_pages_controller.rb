@@ -1,15 +1,17 @@
 class StaticPagesController < ApplicationController
-  def home
-  	@expense = current_user.expenses.build if logged_in?
-  	@feed_items = current_user.feed.paginate(page: params[:page])
-  end
+	def home
+		if logged_in?
+			@expense = current_user.expenses.build
+			@feed_items = current_user.feed.paginate(page: params[:page])
+		end
+	end
 
-  def help
-  end
-  
-  def about
-  end
+	def help
+	end
 
-  def contact
-  end
+	def about
+	end
+
+	def contact
+	end
 end

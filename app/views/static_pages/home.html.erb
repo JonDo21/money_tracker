@@ -9,7 +9,7 @@
       </section>
     </aside>
     <div class="col-md-8">
-      <h3>Your Transactions</h3>
+      <h3><%= pluralize(current_user.expenses.count, "expense") %></h3>
       <%= render 'shared/feed' %>
     </div>
   </div>
