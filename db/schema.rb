@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205200005) do
+ActiveRecord::Schema.define(version: 20141208224440) do
 
   create_table "expenses", force: true do |t|
     t.decimal  "amount"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20141205200005) do
 
   add_index "expenses", ["sharing_user_id"], name: "index_expenses_on_sharing_user_id"
   add_index "expenses", ["user_id"], name: "index_expenses_on_user_id"
+
+  create_table "friends", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "friends", ["followed_id"], name: "index_friends_on_followed_id"
+  add_index "friends", ["follower_id", "followed_id"], name: "index_friends_on_follower_id_and_followed_id", unique: true
+  add_index "friends", ["follower_id"], name: "index_friends_on_follower_id"
 
   create_table "users", force: true do |t|
     t.string   "uname"

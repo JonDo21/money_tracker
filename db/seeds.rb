@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+#users
 User.create!(uname:  "exampleuser",
              fname: "Example",
              lname: "User",
@@ -13,7 +14,7 @@ User.create!(uname:  "exampleuser",
              password:              "foobar",
              password_confirmation: "foobar")
 
-19.times do |n|
+50.times do |n|
   fname  = Faker::Name.first_name
   lname = Faker::Name.last_name
   uname = Faker::Internet.user_name(fname)
@@ -27,10 +28,20 @@ User.create!(uname:  "exampleuser",
                password_confirmation: password)
 end
 
+#expenses
 users = User.order(:created_at).take(6)
 10.times do
   amount = Faker::Number.number(2)
   rand_num = rand(1..10)
   sharing_user = User.find_by(id: rand_num)
-  users.each { |user| user.expenses.create!(amount: amount, sharing_user: sharing_user) }
+  description = Faker::Lorem.word
+  users.each { |user| user.expenses.create!(amount: amount, description: description, sharing_user: sharing_user) }
 end
+
+# Following friends
+users = User.all
+user  = users.first
+following = users[10..40]
+followers = users[3..30]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

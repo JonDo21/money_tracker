@@ -1,8 +1,10 @@
 <ul id="expense-<%= expense.id %>">
+  <%= link_to gravatar_for(expense.user, size: 50), expense.user %>
+  <span class="user"><%= link_to expense.user.uname, expense.user %></span>
   <span class="amount"><%= number_to_currency(expense.amount, :unit => "$") %></span>
-  <span class="description"> for <%= expense.description %></span>
+  <span class="description"> for <b><%= expense.description %></b></span>
   <% if expense.sharing_user %>
-  <span class="sharing_user">Shared with <%= link_to expense.sharing_user.uname, expense.sharing_user %></span>
+  <span class="sharing_user">Shared with <b><%= link_to expense.sharing_user.uname, expense.sharing_user %></b></span>
   <%end%>
   <span class="timestamp"> created 
     <%= time_ago_in_words(expense.created_at) %> ago.
