@@ -1,6 +1,26 @@
 <h1>Balance</h1>
 <!-- Add a pie chart, Your balance here-->
 <head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['You Owe $0',     1],
+          ['People Owe You $0',      1],
+        ]);
+
+        var options = {
+//          title: 'Your Balance',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
 <style>
 .donut {width: 1006%; height: 150px; min-width: 150px;}
 .donut_label {
@@ -11,20 +31,24 @@
 	width: 100%;
 	top: 30%;
 }
-
 </style>
 </head>
 
 <body>
-	<div class = "container">
+<!--	<div class = "container">
 		<h4 class = "text-center">$0</h4>
 		<div class="col-xs-3 col-xs-offset-3">
 			<div id="chart1" class="donut"></div>
 			<div class="donut-label">$0</div>
 		</div>
 	</div>
+-->	<div id="piechart_3d" style="width: 900px; height: 300px;"></div>
+	<div class="input-group input-group-sm col-sm-offset-2 col-sm-8">
+		<b>Tired of losing track of your money? Tired of trying to remember who owes you what or how much you owe someone?</b><br>
+		<b>Using Money Tracker, your money owing issues are over. Start now with </b> <%= link_to "this", signup_path %><b>.</b>
+	</div>
 </body>
 <!-- Advertise want a way to keep track of your expenses and the expenses your friends owe you-->
 
 
-<p>Find me in app/views/static_pages/home.html.erb</p>
+
